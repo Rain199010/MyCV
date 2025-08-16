@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainier Oberholzer - Curriculum Vitae</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Container for the entire dashboard */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header section with main branding */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .header .tagline {
+            font-size: 1rem;
+            color: #34495e;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact information styling */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Grid layout for dashboard sections */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Individual dashboard card styling */
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* Skills progression visual representation */
+        .skills-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .timeline-year {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            margin-left: 20px;
+            flex: 1;
+        }
+
+        .timeline-skill {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* Progress bars for skill levels */
+        .skill-bar {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .skill-level {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Impact metrics styling */
+        .impact-metric {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .metric-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Industry experience grid */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .industry-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .industry-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .industry-years {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        /* Full-width sections */
+        .full-width-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Professional summary styling */
+        .professional-summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: justify;
+        }
+
+        /* Work experience timeline */
+        .work-timeline {
+            position: relative;
+        }
+
+        .work-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+            border-left: 2px solid #3498db;
+        }
+
+        .work-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .job-period {
+            background: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .company-name {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .job-achievements {
+            list-style: none;
+        }
+
+        .job-achievements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .job-achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .work-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-period {
+                margin-top: 5px;
+            }
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for progress bars */
+        @keyframes fillAnimation {
+            from { width: 0%; }
+        }
+
+        .progress-fill {
+            animation: fillAnimation 2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main dashboard container -->
+    <div class="dashboard-container">
+        
+        <!-- Header section with personal branding -->
+        <header class="header">
+            <h1>Rainier Oberholzer</h1>
+            <p class="subtitle">Systems Specialist | Data & Infrastructure Integration</p>
+            <p class="tagline">"I see patterns where others see problems. I build systems where others see chaos. When something doesn't work the way it should, I can't help but figure out how to make it better."</p>
+            
+            <!-- Contact information display -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Johannesburg, South Africa</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>067 090 3299</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>roberholzer1990@gmail.com</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Professional summary section -->
+        <section class="full-width-section">
+            <h2 class="card-title">About Me</h2>
+            <p class="professional-summary">
+                I've spent 15 years moving between industries because each one taught me something different about how systems actually work. Started in admin, moved into business intelligence when I kept spotting patterns in the data. Built reporting tools that saved hours of manual work. Learned 3D fabrication because I wanted to understand how digital designs become physical products. Picked up trade skills because I needed to know how things actually get installed and maintained. Now I'm the person who can troubleshoot a SQL query and wire a gate controller in the same afternoon - because understanding the whole system means understanding all its parts.
+            </p>
+        </section>
+
+        <!-- Key metrics dashboard -->
+        <section class="dashboard-grid">
+            <!-- Core results metric -->
+            <div class="dashboard-card">
+                <h3 class="card-title">Track Record</h3>
+                <div class="impact-metric">
+                    <span class="metric-number">15+</span>
+                    <span class="metric-label">Years Building Systems</span>
+                </div>
+                <div class="impact-metric">
+                    <span class="metric-number">6</span>
+                    <span class="metric-label">Industries Learned</span>
+                </div>
+                <div class="impact-metric">
+                    <span class="metric-number">90%</span>
+                    <span class="metric-label">Projects Delivered</span>
+                </div>
+                <div class="impact-metric" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="metric-number">10%</span>
+                    <span class="metric-label">Limitations Accepted</span>
+                </div>
+            </div>
+
+            <!-- Technical skills with honest assessments -->
+            <div class="dashboard-card">
+                <h3 class="card-title">Technical Skills</h3>
+                
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span>MS SQL & Database Design</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span>QlikView & Business Intelligence</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span>Process Automation</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span>Project Coordination</span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-name">
+                        <span>AI/LLM Integration</span>
+                        <span class="skill-level">Learning</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What I actually bring to the table -->
+            <div class="dashboard-card">
+                <h3 class="card-title">What I Bring</h3>
+                <div class="industry-grid">
+                    <div class="industry-item">
+                        <div class="industry-name">Pattern Recognition</div>
+                        <div class="industry-years">See connections</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-name">System Thinking</div>
+                        <div class="industry-years">Understand flow</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-name">Hands-On Skills</div>
+                        <div class="industry-years">Can implement</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-name">Data Analysis</div>
+                        <div class="industry-years">Find insights</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-name">Automation</div>
+                        <div class="industry-years">Eliminate repetition</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-name">Problem Solving</div>
+                        <div class="industry-years">Fix what's broken</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills evolution timeline -->
+        <section class="full-width-section">
+            <h2 class="card-title">How I Got Here</h2>
+            <div class="skills-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2012</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">Started in Admin</div>
+                        <div class="timeline-description">Basic reporting, but kept noticing inefficiencies in the data flow</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">Moved to Business Intelligence</div>
+                        <div class="timeline-description">Built QlikView dashboards and automated reports that actually got used</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">Learned 3D Fabrication</div>
+                        <div class="timeline-description">Wanted to understand how digital designs become physical products</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">E-commerce & Inventory</div>
+                        <div class="timeline-description">Streamlined stock systems and improved backend processes</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">Freelance Installation Work</div>
+                        <div class="timeline-description">Learned how systems actually get built and maintained in the real world</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-skill">Ready for New Opportunities</div>
+                        <div class="timeline-description">Family business partnership dissolved - now seeking to apply integrated skillset in structured organizational environment</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional experience section -->
+        <section class="full-width-section">
+            <h2 class="card-title">Work Experience</h2>
+            <div class="work-timeline">
+                
+                <!-- Current Experience -->
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">Freelance Installation Specialist</div>
+                        <div class="job-period">2020 – Present</div>
+                    </div>
+                    <div class="company-name">Various Clients | Electrical, Structural, Security Systems</div>
+                    <ul class="job-achievements">
+                        <li>Install and service structural steelwork, security gates, and electrical systems</li>
+                        <li>Coordinate between trades to ensure projects meet code and client requirements</li>
+                        <li>Gained hands-on understanding of how digital plans become physical installations</li>
+                        <li>Developed reputation for solving on-site problems that weren't in the original specifications</li>
+                    </ul>
+                </div>
+
+                <!-- Previous Roles -->
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">Director's Assistant</div>
+                        <div class="job-period">May 2019 – Nov 2019</div>
+                    </div>
+                    <div class="company-name">Indelicate Apparel</div>
+                    <ul class="job-achievements">
+                        <li>Managed consignment inventory system tracking both on-site and remote stock</li>
+                        <li>Streamlined operational processes by connecting disconnected workflows</li>
+                        <li>Improved e-commerce platform user experience and conducted QA testing</li>
+                        <li>Built relationships with key clients while maintaining attention to operational details</li>
+                    </ul>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">Admin, Training & Client Liaison Executive's Assistant</div>
+                        <div class="job-period">Sept 2015 – Dec 2016</div>
+                    </div>
+                    <div class="company-name">Advanced Debt Recovery Solutions</div>
+                    <ul class="job-achievements">
+                        <li>Created executive reports that turned complex data into clear business insights</li>
+                        <li>Built automated workflows that eliminated hours of manual data entry</li>
+                        <li>Managed special campaigns from concept through execution</li>
+                        <li>Coordinated between admin, training, and client teams to ensure consistent service delivery</li>
+                        <li>Left due to company restructuring and retrenchment</li>
+                    </ul>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">Junior Business Intelligence Developer</div>
+                        <div class="job-period">Nov 2014 – Sept 2015</div>
+                    </div>
+                    <div class="company-name">Advanced Debt Recovery Solutions</div>
+                    <ul class="job-achievements">
+                        <li>Built QlikView dashboards and SQL reports that management actually used for decisions</li>
+                        <li>Automated data workflows that reduced manual processing time by 70%</li>
+                        <li>Translated business requirements into technical solutions that non-technical users could operate</li>
+                        <li>Maintained data quality standards and caught inconsistencies before they became problems</li>
+                    </ul>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">Operations, Admin & Training Executive's Assistant</div>
+                        <div class="job-period">Oct 2013 – Nov 2014</div>
+                    </div>
+                    <div class="company-name">Advanced Debt Recovery Solutions</div>
+                    <ul class="job-achievements">
+                        <li>Developed data-driven campaign strategies that improved response rates</li>
+                        <li>Handled urgent analysis requests with quick turnaround while maintaining accuracy</li>
+                        <li>Identified and corrected data inconsistencies across multiple departments</li>
+                        <li>Created process documentation that others could follow and maintain</li>
+                    </ul>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-header">
+                        <div class="job-title">General Manager's Assistant</div>
+                        <div class="job-period">Nov 2012 – Oct 2013</div>
+                    </div>
+                    <div class="company-name">Advanced Debt Recovery Solutions</div>
+                    <ul class="job-achievements">
+                        <li>Started with basic admin tasks but quickly showed ability to spot patterns in operational data</li>
+                        <li>Prepared daily reports that helped management make faster, better-informed decisions</li>
+                        <li>Coordinated contractor performance tracking and identified improvement opportunities</li>
+                        <li>Served as communication link between management and operational teams</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Add smooth loading animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars on scroll or load
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            // Function to animate progress bars
+            function animateProgressBars() {
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 500);
+                });
+            }
+
+            // Trigger animation after a short delay
+            setTimeout(animateProgressBars, 1000);
+        });
+    </script>
+</body>
+</html>
