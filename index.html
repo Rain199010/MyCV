@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rainier Oberholzer - Curriculum Vitae</title>
     <style>
@@ -217,6 +214,40 @@
             background: #f8f9fa;
             border-radius: 8px;
             border-left: 4px solid #3498db;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .industry-item.clickable {
+            cursor: pointer;
+        }
+
+        .industry-item.clickable:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .industry-details {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 10;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        .industry-details.active {
+            display: block;
         }
 
         .industry-name {
@@ -480,29 +511,59 @@
             <div class="dashboard-card">
                 <h3 class="card-title">What I Bring</h3>
                 <div class="industry-grid">
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('pattern')">
                         <div class="industry-name">Pattern Recognition</div>
                         <div class="industry-years">See connections</div>
+                        <div class="industry-details" id="pattern-details">
+                            • Spotted data inconsistencies that saved ADRS hours of rework<br>
+                            • Identified workflow bottlenecks at Indelicate Apparel<br>
+                            • See system-wide implications of local changes
+                        </div>
                     </div>
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('system')">
                         <div class="industry-name">System Thinking</div>
                         <div class="industry-years">Understand flow</div>
+                        <div class="industry-details" id="system-details">
+                            • Built QlikView dashboards that connected multiple data sources<br>
+                            • Coordinated electrical, structural, and compliance requirements<br>
+                            • See how changes in one area affect the whole operation
+                        </div>
                     </div>
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('hands')">
                         <div class="industry-name">Hands-On Skills</div>
                         <div class="industry-years">Can implement</div>
+                        <div class="industry-details" id="hands-details">
+                            • Install security gates, electrical systems, structural work<br>
+                            • Configure hardware setups and maintain equipment<br>
+                            • Understand real-world constraints of digital solutions
+                        </div>
                     </div>
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('data')">
                         <div class="industry-name">Data Analysis</div>
                         <div class="industry-years">Find insights</div>
+                        <div class="industry-details" id="data-details">
+                            • Built SQL reports that management used for decisions<br>
+                            • Created campaign targeting that improved response rates<br>
+                            • Verified data integrity across multiple departments
+                        </div>
                     </div>
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('automation')">
                         <div class="industry-name">Automation</div>
                         <div class="industry-years">Eliminate repetition</div>
+                        <div class="industry-details" id="automation-details">
+                            • Reduced manual processing time by 70% at ADRS<br>
+                            • Automated reporting workflows that saved hours daily<br>
+                            • Built systems that minimized human error
+                        </div>
                     </div>
-                    <div class="industry-item">
+                    <div class="industry-item clickable" onclick="toggleDetails('solving')">
                         <div class="industry-name">Problem Solving</div>
                         <div class="industry-years">Fix what's broken</div>
+                        <div class="industry-details" id="solving-details">
+                            • Solve on-site problems not in original specifications<br>
+                            • Debug SQL queries while troubleshooting hardware<br>
+                            • Find solutions that work within real-world constraints
+                        </div>
                     </div>
                 </div>
             </div>
@@ -678,6 +739,33 @@
 
             // Trigger animation after a short delay
             setTimeout(animateProgressBars, 1000);
+        });
+
+        // Toggle details for industry items
+        function toggleDetails(itemId) {
+            // Hide all other details first
+            const allDetails = document.querySelectorAll('.industry-details');
+            allDetails.forEach(detail => {
+                if (detail.id !== itemId + '-details') {
+                    detail.classList.remove('active');
+                }
+            });
+
+            // Toggle the clicked item
+            const details = document.getElementById(itemId + '-details');
+            if (details) {
+                details.classList.toggle('active');
+            }
+        }
+
+        // Close details when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.industry-item')) {
+                const allDetails = document.querySelectorAll('.industry-details');
+                allDetails.forEach(detail => {
+                    detail.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
