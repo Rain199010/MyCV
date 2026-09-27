@@ -1,2 +1,2 @@
 # MyCV
-My resume as of 2025
+My resume as of 2026
